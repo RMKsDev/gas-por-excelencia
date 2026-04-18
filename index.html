@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>GasRápido | Gas LP a domicilio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+            color: #1e2a3e;
+        }
+
+        /* Encabezado */
+        .header {
+            background: white;
+            color: black;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        .logo p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .nav a {
+            color: blue;
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            color: lightblue;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://gaslink.mx/wp-content/uploads/2020/06/Gas-estacionario-Mexico-y-sus-tipos-de-instalaciones-1080x675.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+        .btn {
+            background-color: #f39c12;
+            color: #1e2a3e;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #e67e22;
+            transform: scale(1.02);
+        }
+
+        /* Servicios */
+        .servicios {
+            padding: 4rem 1rem;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: #0b3b2f;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .card {
+            background: #fef9e8;
+            border-radius: 20px;
+            padding: 1.8rem;
+            width: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            text-align: center;
+            border-bottom: 4px solid #f39c12;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin: 1rem 0 0.5rem;
+            color: #1c6e4a;
+        }
+        .card p {
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        .icon {
+            font-size: 3rem;
+        }
+        
+        /* Sección de flota / galería */
+        .flota {
+            padding: 4rem 1rem;
+            background: #f9f9f9;
+        }
+
+        .flota-subtitle {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .galeria-item {
+            position: relative;
+            border-radius: 16px;
+    overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.02);
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .galeria-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem 1rem 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .galeria-item:hover .galeria-overlay {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 700px) {
+            .galeria {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .galeria-item img {
+                height: 180px;
+            }
+        }
+
+        /* Contacto */
+        .contacto {
+            background: #e0f0ea;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .contact-item a {
+            text-decoration: none;
+            color: #0b3b2f;
+        }
+
+        footer {
+            background: #0b3b2f;
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* modal simple (javascript) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .close-modal {
+            margin-top: 1rem;
+            background: #1c6e4a;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        @media (max-width: 700px) {
+            .logo-area {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav a {
+                margin: 0 12px;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Ajustes para el logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        /* Reducir padding del header para que el logo no tenga tanto margen */
+        .header {
+            padding: 0.5rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .logo {
+                justify-content: center;
+                gap: 10px;
+            }
+            .logo-img {
+                height: 55px;
+            }
+        }
+        
+        /* Bloquear selección de texto en toda la página incluyendo botones */
+        body, button, .btn, a, div, span, h1, h2, h3, h4, p, li, .card, .contact-item {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Evitar el efecto de selección al hacer doble clic en botones */
+        button:active, .btn:active, button:focus, .btn:focus {
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Permitir selección en el modal para que puedan copiar el número */
+        .modal-content, .modal-content p, .modal-content h3 {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container logo-area">
+            <div class="logo">
+                <img src="https://i.imgur.com/LoCXE29.png" alt="Gas por excelencia" class="logo-img">
+            </div>
+            <div class="nav">
+                <a href="#">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#flota">Flota</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Gas LP a domicilio <br> con la mejor atención</h2>
+            <p>Más de 15 años de experiencia entregando seguridad y confianza. Para casa, negocio o industria.</p>
+            <button id="btnPedido" class="btn">📞 Pedir ahora</button>
+        </div>
+    </section>
+
+    <section id="servicios" class="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🛢️</div>
+                    <h3>Cilindros de Gas</h3>
+                    <p>10 kg, 20 kg y 30 kg. Entregamos en tu hogar o negocio sin costo extra.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏭</div>
+                    <h3>Tanque Estacionario</h3>
+                    <p>Llenado de tanques de 170L, 300L, 500L y hasta 2000L.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔧</div>
+                    <h3>Instalación Segura</h3>
+                    <p>Instalación y revisión de conexiones de gas por técnicos certificados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería / Flota de unidades -->
+    <section id="flota" class="flota">
+        <div class="container">
+            <h2 class="section-title">Nuestra Flota de Unidades</h2>
+            <p class="flota-subtitle">Contamos con unidades modernas y seguras para la entrega de gas LP a domicilio</p>
+        
+            <div class="galeria">
+                <div class="galeria-item">
+                    <img src="https://gaslink.mx/wp-content/uploads/2019/12/Precio-Gas-LP-en-Naucalpan-estuvo-por-las-nubes-980x590.jpg" alt="Pipa de gas">
+                    <div class="galeria-overlay">
+                        <span>Unidades de carga</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://gaslink.mx/wp-content/uploads/2019/09/EB-BB4390.jpg" alt="Tanque estacionario">
+                    <div class="galeria-overlay">
+                        <span>Tanques estacionarios</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://i.imgur.com/x4RoKGe.jpeg" alt="Entrega a domicilio">
+                    <div class="galeria-overlay">
+                        <span>Entrega a domicilio</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D620813754161264&f=1&ipt=4f574ae5b0ec386c20a36f291d0deff1cb467de4400376847216b9b88cb4368f" alt="Cilindros de gas">
+                    <div class="galeria-overlay">
+                        <span>Cilindros de 10kg - 30kg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <p>Estamos disponibles de lunes a domingo de 8:00 a.m. a 9:00 p.m.</p>
+            <p>Comunícate con:</p>
+            <p><br>Miguel Angel Arana</p>
+            <div class="contacto-info">
+                <div class="contact-item">✉️ <a href="mailto:servicio@gasrapido.mx">servicio@gasxexcelencia.mx</a></div>
+                <div class="contact-item">📞 <a href="tel:+527123132458">+52 712 313 2458</a></div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.4rem;"></i>
+                    <a href="#" id="whatsappLink">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Gas por excelencia ©2026 - Servicio de gas LP a domicilio con responsabilidad y puntualidad.</p>
+    </footer>
+
+    <!-- Modal simple de pedido rápido -->
+    <div id="modalPedido" class="modal">
+        <div class="modal-content">
+            <h3>⚡ Pedido rápido ⚡</h3>
+            <p>Llámanos al 712 313 2458 o envíanos</p>
+            <p>un WhatsApp al mismo número.</p>
+            <button class="close-modal" id="closeModal">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para mostrar modal y enlace de WhatsApp
+        const btnPedido = document.getElementById('btnPedido');
+        const modal = document.getElementById('modalPedido');
+        const closeModal = document.getElementById('closeModal');
+        const whatsappLink = document.getElementById('whatsappLink');
+        
+        // Verificar que los elementos existen (justo después de las constantes)
+        console.log('Botón pedido:', btnPedido);
+        console.log('Modal:', modal);
+        console.log('WhatsApp link:', whatsappLink);
+
+        btnPedido.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // whatsapp real
+        whatsappLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const numero = '527123132458';  // formato internacional sin +
+            const mensaje = encodeURIComponent('Hola, quiero pedir gas LP a domicilio');
+        window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
+        });
+
+        // efecto suave para anclas (opcional)
+        document.querySelectorAll('.nav a, .btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.hash && this.hash !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.hash);
+                    if(target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        // Para el botón hero que no es ancla, no interferir
+        if(document.querySelector('.hero .btn')) {
+            document.querySelector('.hero .btn').removeEventListener('click', ()=>{}); 
+        }
+    </script>
+</body>
+</html>
