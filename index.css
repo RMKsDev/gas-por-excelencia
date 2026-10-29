@@ -1,0 +1,183 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.app-container {
+    display: flex;
+    gap: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(109, 76, 255, 0.2);
+    border: 2px solid #6d4aff;
+    flex-wrap: wrap; /* Para que en móvil se apilen */
+    justify-content: center;
+}
+
+.panel-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 260px;
+}
+
+.panel-formulario h1 { font-size: 1.3rem; color: #333; margin: 0; }
+.subtitulo { font-size: 0.85rem; color: #888; margin: 0 0 10px 0; }
+
+.panel-formulario label {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.panel-formulario input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.panel-formulario input:focus {
+    border-color: #6d4aff;
+}
+
+.panel-formulario hr {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin: 8px 0;
+}
+
+.panel-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#qrcode {
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    border: 1px dashed #6d4aff;
+}
+
+/* Botón (reutiliza el que ya tenías) */
+.btn-download {
+    background: linear-gradient(135deg, #6d4aff, #8c6aff);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(109, 76, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(109, 76, 255, 0.5);
+}
+
+/* Grupo de teléfonos */
+.grupo-telefonos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.etiqueta-grupo {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: bold;
+}
+
+.fila-telefono {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.fila-telefono .tel-tipo {
+    flex: 0 0 90px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    background: white;
+}
+
+.fila-telefono .tel-numero {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.fila-telefono .tel-numero:focus {
+    border-color: #6d4aff;
+}
+
+.btn-borrar-tel {
+    flex: 0 0 auto;
+    background: #ffe5e5;
+    color: #d63333;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-borrar-tel:hover {
+    background: #ffcccc;
+}
+
+/* Botones secundarios (agregar teléfono, descargar vcf) */
+.btn-secundario {
+    background: white;
+    color: #6d4aff;
+    border: 2px solid #6d4aff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secundario:hover {
+    background: #f0ecff;
+}
+
+/* Select del estilo */
+.panel-formulario select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: white;
+    outline: none;
+}
+
+.panel-formulario select:focus {
+    border-color: #6d4aff;
+}

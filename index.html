@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Generador de vCard QR</title>
+        <script
+            type="text/javascript"
+            src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"
+        ></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="app-container">
+            <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+            <div class="panel-formulario">
+                <h1>Generador de Tarjeta QR</h1>
+                <p class="subtitulo">
+                    Llena solo los campos que quieras mostrar.
+                </p>
+
+                <label
+                    >Nombre completo *
+                    <input
+                        type="text"
+                        id="campo-nombre"
+                        placeholder="Ej. Rimeck"
+                    />
+                </label>
+
+                <label
+                    >Título profesional
+                    <input
+                        type="text"
+                        id="campo-titulo"
+                        placeholder="Ej. Desarrollador de Software"
+                    />
+                </label>
+
+                <label
+                    >Correo electrónico
+                    <input
+                        type="email"
+                        id="campo-email"
+                        placeholder="ejemplo@proton.me"
+                    />
+                </label>
+
+                <!-- TELÉFONOS DINÁMICOS -->
+                <div class="grupo-telefonos">
+                    <span class="etiqueta-grupo">Teléfonos</span>
+                    <div id="lista-telefonos">
+                        <!-- Los inputs de teléfono se generan aquí con JS -->
+                    </div>
+                    <button
+                        type="button"
+                        id="btn-add-tel"
+                        class="btn-secundario"
+                    >
+                        + Agregar teléfono
+                    </button>
+                </div>
+
+                <label
+                    >WhatsApp
+                    <input
+                        type="text"
+                        id="campo-whatsapp"
+                        placeholder="@usuario"
+                    />
+                </label>
+
+                <label
+                    >Telegram
+                    <input
+                        type="text"
+                        id="campo-telegram"
+                        placeholder="@usuario"
+                    />
+                </label>
+
+                <label
+                    >Sitio web / GitHub
+                    <input
+                        type="url"
+                        id="campo-url"
+                        placeholder="https://github.com/usuario"
+                    />
+                </label>
+
+                <label
+                    >Ubicación / Dirección
+                    <input
+                        type="text"
+                        id="campo-ubicacion"
+                        placeholder="Ej. CDMX, México"
+                    />
+                </label>
+
+                <label
+                    >Cumpleaños
+                    <input type="date" id="campo-cumple" />
+                </label>
+
+                <label
+                    >Nota libre
+                    <input
+                        type="text"
+                        id="campo-nota"
+                        placeholder="Ej. Disponible para freelance"
+                    />
+                </label>
+
+                <hr />
+
+                <label
+                    >Estilo del QR
+                    <select id="campo-estilo">
+                        <option value="rounded">Redondeado</option>
+                        <option value="square">Cuadrado (clásico)</option>
+                        <option value="dots">Puntos</option>
+                        <option value="classy-rounded">
+                            Elegante redondeado
+                        </option>
+                    </select>
+                </label>
+
+                <label
+                    >Color del QR
+                    <input type="color" id="campo-color" value="#6d4aff" />
+                </label>
+
+                <label
+                    >Color de fondo
+                    <input type="color" id="campo-fondo" value="#ffffff" />
+                </label>
+            </div>
+
+            <!-- COLUMNA DERECHA: VISTA PREVIA -->
+            <div class="panel-preview">
+                <div id="qrcode"></div>
+                <button id="download-btn" class="btn-download">
+                    Descargar QR (PNG)
+                </button>
+                <button id="download-vcf-btn" class="btn-secundario">
+                    Descargar contacto (.vcf)
+                </button>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+</html>
