@@ -178,14 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------------------------------------------------------
 
     // Descargar el QR como PNG
-    downloadBtn.addEventListener("click", async () => {
-        try {
-            const blob = await qrCode.getFile("png");
-            descargarBlob(blob, "mi-tarjeta-qr.png");
-        } catch (error) {
-            console.error("Error al descargar el QR:", error);
-            alert("Hubo un problema al generar la imagen.");
-        }
+    downloadBtn.addEventListener("click", () => {
+    qrCode.download({ name: "mi-tarjeta-qr", extension: "png" });
     });
 
     // Descargar la vCard como archivo .vcf
